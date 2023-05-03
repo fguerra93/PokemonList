@@ -1,0 +1,34 @@
+<div class="pokemon-list-container">
+    <div class="title-container">
+        <h1 class="title">¡Encuentra tu Pokémon favorito!</h1>
+      </div>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>Listado de Pokémon</span>
+        <span class="spacer"></span>
+        <mat-form-field appearance="fill">
+          <mat-label>Buscar Pokémon</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Nombre del Pokémon" />
+        </mat-form-field>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  
+    <mat-table [dataSource]="pokemons" matSort>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+        <mat-cell *matCellDef="let pokemon">{{ pokemon.name }}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+        <mat-cell *matCellDef="let pokemon">
+          <button mat-raised-button color="warn" (click)="deletePokemon(pokemon)">Eliminar</button>
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+    <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+</div>
