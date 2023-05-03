@@ -21,7 +21,7 @@ ng --version
 Instalación
 
 1.Clone el repositorio en su máquina local:
-git clone https://github.com/your-username/poke-list.git
+git clone https://github.com/fguerra93/PokemonList.git
 
 2.Cambie al directorio del proyecto clonado:
 cd poke-list
